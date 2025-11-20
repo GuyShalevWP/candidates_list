@@ -1,0 +1,124 @@
+{
+  "candidates": [
+        {
+      "id": "GuyShalev-FrontendDeveloper-1",
+      "name": "Guy Shalev",
+      "email": "guy.shalev@example.com",
+      "position": "Frontend Developer",
+      "status": "hired",
+      "experienceYears": 1
+    },
+    {
+      "id": "AliceJohnson-FrontendDeveloper-2",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@example.com",
+      "position": "Frontend Developer",
+      "status": "new",
+      "experienceYears": 2
+    },
+    {
+      "id": "AliceJohnson-BackendDeveloper-4",
+      "name": "Alice Johnson",
+      "email": "alice.j.dev@example.com",
+      "position": "Backend Developer",
+      "status": "interview",
+      "experienceYears": 4
+    },
+    {
+      "id": "DavidLee-QAEngineer-1",
+      "name": "David Lee",
+      "email": "david.lee@example.com",
+      "position": "QA Engineer",
+      "status": "new",
+      "experienceYears": 1
+    },
+    {
+      "id": "JuliaBrown-UXDesigner-3",
+      "name": "Julia Brown",
+      "email": "julia.brown@example.com",
+      "position": "UX Designer",
+      "status": "interview",
+      "experienceYears": 3
+    },
+    {
+      "id": "EthanWalker-DevOpsEngineer-5",
+      "name": "Ethan Walker",
+      "email": "ethan.walker@example.com",
+      "position": "DevOps Engineer",
+      "status": "hired",
+      "experienceYears": 5
+    },
+    {
+      "id": "NinaPatel-ProjectManager-7",
+      "name": "Nina Patel",
+      "email": "nina.patel@example.com",
+      "position": "Project Manager",
+      "status": "new",
+      "experienceYears": 7
+    },
+    {
+      "id": "OliverSmith-FrontendDeveloper-1",
+      "name": "Oliver Smith",
+      "email": "oliver.smith@example.com",
+      "position": "Frontend Developer",
+      "status": "new",
+      "experienceYears": 1
+    },
+    {
+      "id": "LaraSchultz-DataAnalyst-4",
+      "name": "Lara Schultz",
+      "email": "lara.schultz@example.com",
+      "position": "Data Analyst",
+      "status": "interview",
+      "experienceYears": 4
+    },
+    {
+      "id": "SamuelGreen-AIEngineer-2",
+      "name": "Samuel Green",
+      "email": "samuel.green@example.com",
+      "position": "AI Engineer",
+      "status": "new",
+      "experienceYears": 2
+    },
+    {
+      "id": "MayaThompson-BackendDeveloper-8",
+      "name": "Maya Thompson",
+      "email": "maya.thompson@example.com",
+      "position": "Backend Developer",
+      "status": "hired",
+      "experienceYears": 8
+    },
+    {
+      "id": "HiroTanaka-FullstackEngineer-5",
+      "name": "Hiro Tanaka",
+      "email": "hiro.tanaka@example.com",
+      "position": "Fullstack Engineer",
+      "status": "interview",
+      "experienceYears": 5
+    },
+    {
+      "id": "CarlaMendes-QAEngineer-2",
+      "name": "Carla Mendes",
+      "email": "carla.mendes@example.com",
+      "position": "QA Engineer",
+      "status": "new",
+      "experienceYears": 2
+    },
+    {
+      "id": "ViktorNovak-DevOpsEngineer-6",
+      "name": "Viktor Novak",
+      "email": "viktor.novak@example.com",
+      "position": "DevOps Engineer",
+      "status": "interview",
+      "experienceYears": 6
+    },
+    {
+      "id": "EmilyCarter-UXDesigner-4",
+      "name": "Emily Carter",
+      "email": "emily.carter@example.com",
+      "position": "UX Designer",
+      "status": "hired",
+      "experienceYears": 4
+    }
+  ]
+}
