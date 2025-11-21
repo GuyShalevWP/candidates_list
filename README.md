@@ -27,7 +27,7 @@ To get started with the project, follow these steps:
 
    - **Backend** (JSON Server):
      ```sh
-     cd backend
+     cd ../backend
      npm install -g json-server
      ```
 
@@ -52,3 +52,11 @@ To get started with the project, follow these steps:
      cd frontend
      npm start
      ```
+
+4. **Run Tests:**
+
+   To run the test suite:
+   ```sh
+   cd frontend
+   npm test
+   ```

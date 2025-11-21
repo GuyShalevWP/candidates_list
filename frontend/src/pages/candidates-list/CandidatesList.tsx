@@ -2,13 +2,14 @@ import "./candidatesList.styles.css";
 import { useEffect, useState } from "react";
 import CandidatesFiltter from "../../components/candidates-list/CandidatesFiltter";
 import CandidatesTable from "../../components/candidates-list/CandidatesTable";
-import { CandidateList } from "../../types/Candidates";
-import { initialFilter, matchesName } from "../../utils/filterUtils";
+import { CandidateType } from "../../types/Candidates";
+import { getFilteredCandidates, initialFilter, matchesName } from "../../utils/filterUtils";
+import { get } from "http";
 
 const BASE_URL = "http://localhost:4000/candidates";
 
 const CandidatesList = () => {
-  const [candidates, setCandidates] = useState<CandidateList[]>([]);
+  const [candidates, setCandidates] = useState<CandidateType[]>([]);
   const [filters, setFilters] = useState(initialFilter);
 
   // Because it's a small project, I'm using fetch directly here.
@@ -25,23 +26,9 @@ const CandidatesList = () => {
     getCandidates();
   }, []);
 
-  // Filtering logic
   // If the data was large, I'd consider to warp it with useMemo for optimization.
   // Because the data search is static, debouncing is not necessary here.
-  const filtered = candidates.filter((c) => {
-    const { name, position, status, experienceYears } = filters;
-
-    const matchName = matchesName(c.name, name);
-
-    const matchExperience =
-      !experienceYears || String(c.experienceYears) === experienceYears;
-
-    const matchPosition = !position || c.position === position;
-
-    const matchStatus = !status || c.status === status.toLowerCase();
-
-    return matchName && matchPosition && matchStatus && matchExperience;
-  });
+  const filtered = getFilteredCandidates(candidates, filters);
 
   return (
     <div className="candidates-list-container">

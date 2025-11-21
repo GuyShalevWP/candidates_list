@@ -1,4 +1,4 @@
-import { CandidateList } from "./Candidates";
+import { CandidateType } from "./Candidates";
 
 export type CandidatesFilterValues = {
   name: string;
@@ -8,7 +8,7 @@ export type CandidatesFilterValues = {
 };
 
 export type CandidatesFiltterProps = {
-  candidates: CandidateList[];
+  candidates: CandidateType[];
   filters: CandidatesFilterValues;
   setFilters: React.Dispatch<React.SetStateAction<CandidatesFilterValues>>;
 };

@@ -9,10 +9,10 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { CandidateList } from "../../types/Candidates";
+import { CandidateType } from "../../types/Candidates";
 import { toTitleCase } from "../../utils/filterUtils";
 
-const CandidatesTable: React.FC<{ candidates: CandidateList[] }> = ({
+const CandidatesTable: React.FC<{ candidates: CandidateType[] }> = ({
   candidates,
 }) => {
   if (!candidates || candidates.length === 0) {

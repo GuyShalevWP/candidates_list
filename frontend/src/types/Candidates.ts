@@ -4,7 +4,7 @@ export enum Status {
   HIRED = "Hired",
 };
 
-export interface CandidateList {
+export interface CandidateType {
   id: string;
   name: string;
   email: string;

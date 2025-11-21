@@ -1,3 +1,4 @@
+import { CandidateType } from "../types/Candidates";
 import { CandidatesFilterValues } from "../types/Filter";
 
 export const initialFilter: Readonly<CandidatesFilterValues> = {
@@ -6,6 +7,23 @@ export const initialFilter: Readonly<CandidatesFilterValues> = {
   status: "",
   experienceYears: "",
 };
+
+export const getFilteredCandidates = (candidates: CandidateType[], filters: CandidatesFilterValues) => {
+  return candidates.filter((c) => {
+    const { name, position, status, experienceYears } = filters;
+
+    const matchName = matchesName(c.name, name);
+
+    const matchExperience =
+      !experienceYears || String(c.experienceYears) === experienceYears;
+
+    const matchPosition = !position || c.position === position;
+
+    const matchStatus = !status || c.status.toLowerCase() === status.toLowerCase();    
+
+    return matchName && matchPosition && matchStatus && matchExperience;
+  });
+}
 
 export const toTitleCase = (text: string) => {
     return text
