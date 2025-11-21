@@ -1,13 +1,13 @@
-import { CandidatesFiltterValues } from "../types/Filter";
+import { CandidatesFilterValues } from "../types/Filter";
 
-export const initialFilter: CandidatesFiltterValues = {
+export const initialFilter: Readonly<CandidatesFilterValues> = {
   name: "",
   position: "",
   status: "",
   experienceYears: "",
 };
 
-export const formatText = (text: string) => {
+export const toTitleCase = (text: string) => {
     return text
       .split(" ")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -20,8 +20,6 @@ export const matchesName = (fullName: string, search: string) => {
   const searchWords = search.toLowerCase().trim().split(/\s+/);
   const nameWords = fullName.toLowerCase().trim().split(/\s+/);
 
-  // every word typed by the user must match the start of
-  // at least one word in the candidate's name
   return searchWords.every((searchWord) =>
     nameWords.some((nameWord) => nameWord.startsWith(searchWord))
   );

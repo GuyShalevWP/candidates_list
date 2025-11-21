@@ -1,12 +1,14 @@
-
-import './App.css';
-import CandidatesList from './pages/candidates-list/CandidatesList';
+import "./App.css";
+import CandidatesList from "./pages/candidates-list/CandidatesList";
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <header>
+        <h1>Candidates List</h1>
+      </header>
       <CandidatesList />
-    </div>
+    </>
   );
 }
 

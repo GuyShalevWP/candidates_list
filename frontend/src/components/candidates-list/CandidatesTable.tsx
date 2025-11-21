@@ -1,18 +1,29 @@
-import React from 'react'
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material'
-import { CandidateList } from '../../types/Candidates'
-import { formatText } from '../../utils/filterUtils'
+import "./candidatesTable.styles.css";
+import React from "react";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import { CandidateList } from "../../types/Candidates";
+import { toTitleCase } from "../../utils/filterUtils";
 
-const CandidatesTable: React.FC<{ candidates: CandidateList[] }> = ({ candidates }) => {
+const CandidatesTable: React.FC<{ candidates: CandidateList[] }> = ({
+  candidates,
+}) => {
   if (!candidates || candidates.length === 0) {
-    return <div>No candidates available</div>
-  }  
-
-
+    return (
+      <div className="no-candidates-available">No candidates available</div>
+    );
+  }
 
   return (
-    <TableContainer  component={Paper} className='candidates-table-container'>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer sx={{ maxHeight: "calc(100vh - 250px)" }} component={Paper}>
+      <Table stickyHeader sx={{ minWidth: 650 }} aria-label="candidates table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -24,18 +35,18 @@ const CandidatesTable: React.FC<{ candidates: CandidateList[] }> = ({ candidates
         </TableHead>
         <TableBody>
           {candidates.map((candidate) => (
-            <TableRow key={candidate.id} className='candidate-row'>
-              <TableCell>{formatText(candidate.name)}</TableCell>
+            <TableRow key={candidate.id} className="candidate-row">
+              <TableCell>{toTitleCase(candidate.name)}</TableCell>
               <TableCell>{candidate.email}</TableCell>
-              <TableCell>{formatText(candidate.position)}</TableCell>
-              <TableCell>{formatText(candidate.status)}</TableCell>
+              <TableCell>{toTitleCase(candidate.position)}</TableCell>
+              <TableCell>{toTitleCase(candidate.status)}</TableCell>
               <TableCell>{candidate.experienceYears}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
-  )
-}
+  );
+};
 
-export default CandidatesTable
+export default CandidatesTable;
