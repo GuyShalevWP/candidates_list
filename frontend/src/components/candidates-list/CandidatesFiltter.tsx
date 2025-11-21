@@ -62,7 +62,7 @@ const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({ candidates, filte
   };
 
   return (
-    <Box className="candidates-filter-container">
+    <div style={{ display: "flex", gap: "0.5rem"}} className="candidates-filter-container">
       {/* Name filter input */}
       <TextField 
         label="Name" 
@@ -72,7 +72,7 @@ const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({ candidates, filte
       />
 
       {/* Positions filter select */}
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <FormControl sx={{ minWidth: 120 }}>
         <InputLabel id="demo-simple-select-disabled-label">Position</InputLabel>
         <Select
           labelId="demo-simple-select-disabled-label"
@@ -83,7 +83,7 @@ const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({ candidates, filte
           disabled={positionDisabled}
         >
           <MenuItem value="">
-            
+            <em>None</em>
           </MenuItem>
           {positions.map((position) => (
             <MenuItem key={position} value={position}>
@@ -94,7 +94,7 @@ const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({ candidates, filte
       </FormControl>
 
       {/* Status filter select */}
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <FormControl sx={{ minWidth: 120 }}>
         <InputLabel id="demo-simple-select-disabled-label">Status</InputLabel>
         <Select
           labelId="demo-simple-select-disabled-label"
@@ -123,7 +123,7 @@ const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({ candidates, filte
 
       {/* Reset filters button */}
       <Button variant="outlined" onClick={() => setFilters(() =>(initialFilter))}>Reset</Button>
-    </Box>
+    </div>
   );
 };
 
