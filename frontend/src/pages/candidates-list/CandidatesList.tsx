@@ -1,11 +1,54 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+import CandidatesFiltter from "../../components/candidates-list/CandidatesFiltter";
+import CandidatesTable from "../../components/candidates-list/CandidatesTable";
+import { CandidateList } from "../../types/Candidates";
+import { initialFilter } from "../../utils/filterUtils";
+
+const URL = "http://localhost:4000/candidates";
 
 const CandidatesList = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const [candidates, setCandidates] = useState<CandidateList[]>([]);
+  const [filters, setFilters] = useState(initialFilter);
 
-export default CandidatesList
+
+  // Because it's a small project, I'm using fetch directly here.
+  // In a larger project I'd make a custom hook that will handle data fetching.
+  // Also, error handling and loading states.
+  useEffect(() => {
+    const getCandidates = async () => {
+      await fetch(URL)
+        .then((res) => res.json())
+        .then((candidatesList) => setCandidates(candidatesList))
+        .catch((err) => console.error(`Error fetching candidates: ${err}`));
+    };
+
+    getCandidates();
+  }, []);
+
+  // Filtering logic
+  const filtered = candidates.filter((c) => {
+    const { name, position, status, experienceYears } = filters;
+
+    const matchName =
+      !name || c.name.toLowerCase().includes(name.toLowerCase().trim());
+    
+    const matchExperience =
+      !experienceYears || String(c.experienceYears) === experienceYears;
+
+    const matchPosition = !position || c.position === position;
+
+    const matchStatus = !status || c.status === status.toLowerCase();
+
+    return matchName && matchPosition && matchStatus && matchExperience;
+  });
+
+
+  return (
+    <div className="candidates-list-container">
+      <CandidatesFiltter candidates={candidates} filters={filters} setFilters={setFilters} />
+      <CandidatesTable candidates={filtered} />
+    </div>
+  );
+};
+
+export default CandidatesList;

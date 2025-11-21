@@ -32,7 +32,7 @@ To get started with the project, follow these steps:
   - Run 'JSON Server'
     ```sh
     cd [your-path]/candidates_lis/backend
-    npx json-server --watch cand-db.json
+    npx json-server --watch cand-db.json -- port 4000
     ```
   - Run the peoject
     ```sh
