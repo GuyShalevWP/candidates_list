@@ -17,7 +17,7 @@ const CandidatesTable: React.FC<{ candidates: CandidateType[] }> = ({
 }) => {
   if (!candidates || candidates.length === 0) {
     return (
-      <div className="no-candidates-available">No candidates available</div>
+      <div className="no-candidates-found">No candidates found</div>
     );
   }
 
