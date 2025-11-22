@@ -100,7 +100,7 @@ const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({
         </Select>
       </FormControl>
 
-      <FormControl sx={{ minWidth: 120, ...(positionDisabled ? {} : borderStyle)}}> 
+      <FormControl sx={{ minWidth: 120, ...(statusDisabled ? {} : borderStyle)}}> 
         <InputLabel>Status</InputLabel>
         <Select
           label="Status"
