@@ -13,6 +13,15 @@ import { CandidatesFiltterProps } from "../../types/Filter";
 import { Status } from "../../types/Candidates";
 import { initialFilter } from "../../utils/filterUtils";
 
+const borderStyle = {
+  "& .MuiOutlinedInput-notchedOutline": {
+    borderColor: "#1976d2",
+  },
+  "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+    borderColor: "#1976d2",
+  },
+};
+
 const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({
   candidates,
   filters,
@@ -69,9 +78,10 @@ const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({
         variant="outlined"
         value={filters.name}
         onChange={handleNameChange}
+        sx={borderStyle}
       />
 
-      <FormControl sx={{ minWidth: 120 }}>
+      <FormControl sx={{ minWidth: 120, ...(positionDisabled ? {} : borderStyle)}}> 
         <InputLabel>Position</InputLabel>
         <Select
           label="Position"
@@ -90,7 +100,7 @@ const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({
         </Select>
       </FormControl>
 
-      <FormControl sx={{ minWidth: 120 }}>
+      <FormControl sx={{ minWidth: 120, ...(positionDisabled ? {} : borderStyle)}}> 
         <InputLabel>Status</InputLabel>
         <Select
           label="Status"
@@ -112,6 +122,7 @@ const CandidatesFiltter: React.FC<CandidatesFiltterProps> = ({
         variant="outlined"
         value={filters.experienceYears}
         onChange={handleExperienceChange}
+        sx={borderStyle}
       />
 
       <Button
