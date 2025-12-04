@@ -1,5 +1,6 @@
-import { CandidateType } from "../types/Candidates";
-import { CandidatesFilterValues } from "../types/Filter";
+import type { CandidateType } from "../types/Candidates";
+import type { CandidatesFilterValues } from "../types/Filter";
+
 
 export const initialFilter: Readonly<CandidatesFilterValues> = {
   name: "",

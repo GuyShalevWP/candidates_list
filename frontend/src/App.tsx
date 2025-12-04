@@ -1,7 +1,8 @@
-import "./App.css";
+import './App.css'
 import CandidatesList from "./pages/candidates-list/CandidatesList";
 
 function App() {
+
   return (
     <>
       <header>
@@ -9,7 +10,7 @@ function App() {
       </header>
       <CandidatesList />
     </>
-  );
+  )
 }
 
-export default App;
+export default App

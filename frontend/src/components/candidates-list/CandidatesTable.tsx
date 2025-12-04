@@ -9,8 +9,8 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { CandidateType } from "../../types/Candidates";
 import { toTitleCase } from "../../utils/filterUtils";
+import type { CandidateType } from "../../types/Candidates";
 
 const CandidatesTable: React.FC<{ candidates: CandidateType[] }> = ({
   candidates,

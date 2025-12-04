@@ -2,9 +2,8 @@ import "./candidatesList.styles.css";
 import { useEffect, useState } from "react";
 import CandidatesFiltter from "../../components/candidates-list/CandidatesFiltter";
 import CandidatesTable from "../../components/candidates-list/CandidatesTable";
-import { CandidateType } from "../../types/Candidates";
-import { getFilteredCandidates, initialFilter, matchesName } from "../../utils/filterUtils";
-import { get } from "http";
+import { getFilteredCandidates, initialFilter} from "../../utils/filterUtils";
+import type { CandidateType } from "../../types/Candidates";
 
 const BASE_URL = "http://localhost:4000/candidates";
 

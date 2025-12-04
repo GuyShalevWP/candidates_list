@@ -1,17 +1,17 @@
 import {
-  Box,
   Button,
   FormControl,
   InputLabel,
   MenuItem,
   Select,
   TextField,
-  SelectChangeEvent,
+  type SelectChangeEvent,
+
 } from "@mui/material";
 import React from "react";
-import { CandidatesFiltterProps } from "../../types/Filter";
 import { Status } from "../../types/Candidates";
 import { initialFilter } from "../../utils/filterUtils";
+import type { CandidatesFiltterProps } from "../../types/Filter";
 
 const borderStyle = {
   "& .MuiOutlinedInput-notchedOutline": {
