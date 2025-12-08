@@ -1,9 +1,21 @@
-import { TableCell } from '@mui/material'
+import { TableCell, TableHead, TableRow } from "@mui/material";
+import { headerTitlesData } from "./headerTitlesData";
+
+
+
 
 const CandidateTableHeaders = () => {
-  return (
-    <TableCell>CandidateTableHeaders</TableCell>
-  )
-}
+  const headersCells = headerTitlesData.map((header) => (
+    <TableCell key={header.headerId}>{header.tableTitles}</TableCell>
+  ));
 
-export default CandidateTableHeaders
+  return (
+    <TableHead>
+      <TableRow>
+        {headersCells}
+      </TableRow>
+    </TableHead>
+  );
+};
+
+export default CandidateTableHeaders;

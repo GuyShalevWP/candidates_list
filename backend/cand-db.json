@@ -1,11 +1,4 @@
 {
-  "tableTitles": [
-    "Name",
-    "Email",
-    "Position",
-    "Status",
-    "Experience (Years)"
-  ],
   "candidates": [
         {
       "id": "GuyShalev-FrontendDeveloper-1",

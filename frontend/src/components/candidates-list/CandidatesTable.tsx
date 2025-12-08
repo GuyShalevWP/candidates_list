@@ -2,15 +2,13 @@ import {
   Paper,
   Table,
   TableBody,
-  TableCell,
   TableContainer,
-  TableHead,
-  TableRow,
 } from "@mui/material";
 import React from "react";
 import type { CandidateType } from "../../types/Candidates";
-import { toTitleCase } from "../../utils/filterUtils";
+import CandidateTableHeaders from "./candidate-table-headers/CandidateTableHeaders";
 import { NoCandidatesContainer } from "./candidatesTable.styles";
+import CandidateTableCells from "./candidate-table-cells/CandidateTableCells";
 
 const CandidatesTable: React.FC<{ candidates: CandidateType[] }> = ({
   candidates,
@@ -24,25 +22,9 @@ const CandidatesTable: React.FC<{ candidates: CandidateType[] }> = ({
   return (
     <TableContainer sx={{ maxHeight: "calc(100vh - 250px)" }} component={Paper}>
       <Table stickyHeader sx={{ minWidth: 650 }} aria-label="candidates table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Position</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell>Experience (years)</TableCell>
-          </TableRow>
-        </TableHead>
+        <CandidateTableHeaders />
         <TableBody>
-          {candidates.map((candidate) => (
-            <TableRow key={candidate.id} className="candidate-row">
-              <TableCell>{toTitleCase(candidate.name)}</TableCell>
-              <TableCell>{candidate.email}</TableCell>
-              <TableCell>{toTitleCase(candidate.position)}</TableCell>
-              <TableCell>{toTitleCase(candidate.status)}</TableCell>
-              <TableCell>{candidate.experienceYears}</TableCell>
-            </TableRow>
-          ))}
+          <CandidateTableCells candidates={candidates} />
         </TableBody>
       </Table>
     </TableContainer>
