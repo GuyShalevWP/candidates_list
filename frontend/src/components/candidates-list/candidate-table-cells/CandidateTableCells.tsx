@@ -10,12 +10,12 @@ const CandidateTableCells: React.FC<{ candidates: CandidateType[] }> = ({
     <>
       {candidates.map((candidate) => (
         <TableRow key={candidate.id} className="candidate-row">
-          {headerTitlesData.map((header) => {
-            const cellValue = candidate[header.headerId];
+          {headerTitlesData.map(({ headerId, isTitleCase }) => {
+            const cellValue = candidate[headerId];
 
             return (
-              <TableCell key={header.headerId}>
-                {header.isTitleCase && typeof cellValue === "string"
+              <TableCell key={headerId}>
+                {isTitleCase && typeof cellValue === "string"
                   ? toTitleCase(cellValue)
                   : cellValue}
               </TableCell>
