@@ -1,5 +1,3 @@
-import "./candidatesTable.styles.css";
-import React from "react";
 import {
   Paper,
   Table,
@@ -9,15 +7,17 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { toTitleCase } from "../../utils/filterUtils";
+import React from "react";
 import type { CandidateType } from "../../types/Candidates";
+import { toTitleCase } from "../../utils/filterUtils";
+import { NoCandidatesContainer } from "./candidatesTable.styles";
 
 const CandidatesTable: React.FC<{ candidates: CandidateType[] }> = ({
   candidates,
 }) => {
   if (!candidates || candidates.length === 0) {
     return (
-      <div className="no-candidates-found">No candidates found</div>
+      <NoCandidatesContainer>No candidates found</NoCandidatesContainer>
     );
   }
 

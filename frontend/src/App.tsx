@@ -1,13 +1,14 @@
 import './App.css'
+import { HeaderContainer } from './app.styles';
 import CandidatesList from "./pages/candidates-list/CandidatesList";
 
 function App() {
 
   return (
     <>
-      <header>
+      <HeaderContainer>
         <h1>Candidates List</h1>
-      </header>
+      </HeaderContainer>
       <CandidatesList />
     </>
   )

@@ -1,4 +1,4 @@
-import { CandidateType } from "./Candidates";
+import type { CandidateType } from "./Candidates";
 
 export type CandidatesFilterValues = {
   name: string;

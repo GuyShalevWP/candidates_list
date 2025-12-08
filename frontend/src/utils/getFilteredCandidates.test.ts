@@ -1,6 +1,7 @@
 import { getFilteredCandidates } from "./filterUtils";
-import { CandidateType, Status } from "../types/Candidates";
-import { CandidatesFilterValues } from "../types/Filter";
+import type { CandidateType } from "../types/Candidates";
+import { Status } from "../types/Candidates";
+import type { CandidatesFilterValues } from "../types/Filter";
 
 describe("getFilteredCandidates", () => {
   const mockCandidates: CandidateType[] = [
