@@ -1,7 +1,8 @@
+import { NoCandidatesFoundStyle } from "./noCandidatesFound.styles"
 
 const NoCandidatesFound = () => {
   return (
-    <div>No candidates found</div>
+    <NoCandidatesFoundStyle>There was a problem loading candidates</NoCandidatesFoundStyle>
   )
 }
 

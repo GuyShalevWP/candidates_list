@@ -1,7 +1,11 @@
+// import { CircularProgress } from "@mui/material"
+import { LoaderBorderStyle, LoaderContainerStyle } from "./loader.styles"
 
 const Loader = () => {
   return (
-    <div>loading...</div>
+    <LoaderContainerStyle>
+      <LoaderBorderStyle />
+    </LoaderContainerStyle>
   )
 }
 
