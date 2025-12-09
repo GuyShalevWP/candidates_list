@@ -7,12 +7,9 @@ import {
   Select,
   TextField,
 } from "@mui/material";
-import { Status, type CandidateType } from "../../../types/Candidates";
+import { Status } from "../../../types/Candidates";
 import CandidateFormControlBtns from "./candidate-form-btns/CandidateFormControlBtns";
-import { useState } from "react";
-import { toTitleCase } from "../../../utils/filterUtils";
-import { validateForm } from "../../../utils/formUtils";
-import { postNewCandidate } from "../../../api/candidates-service";
+import type { CandidateFormProps } from "../addCandidate.types";
 
 // temp
 const style = {
@@ -26,71 +23,32 @@ const style = {
   p: 4,
 };
 
-type CandidateFormProps = {
-  handleClose: () => void;
-};
+const CandidateForm = ({
+  handleClose,
+  handleSubmit,
+  setErrors,
+  errors,
+  isPending,
+  isSuccess,
+  isError,
+}: CandidateFormProps) => {
 
-type FormErrors = {
-  [key: string]: string;
-};
-
-type FormDataType = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  position: string;
-  status: Status;
-  experience: number;
-};
-
-const CandidateForm = ({ handleClose }: CandidateFormProps) => {
-  const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const {mutate: addCandidate, isPending, isError, error } = postNewCandidate();
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const newErrors: Record<string, string> = {};
-
-    validateForm({ formData, newErrors });
-    setErrors(newErrors);
-
-    if (Object.keys(newErrors).length === 0) {
-      const data = Object.fromEntries(formData);
-
-      const newCandidate: CandidateType = {
-        id: crypto.randomUUID(),
-        name: toTitleCase(`${data.firstName} ${data.lastName}`),
-        email: data.email as string,
-        position: toTitleCase(data.position as string),
-        status: data.status as Status,
-        experienceYears: Number(data.experience),
-      };
-
-      addCandidate(newCandidate, {
-        onSuccess: () => {
-          console.log("Candidate added successfully");
-          handleClose(); // Close the modal on success
-        },
-        onError: (error) => {
-          console.error("Failed to add candidate:", error);
-        }
-      });
+  const apiCallMessages = () => {
+    if (isError) {
+      return (
+        <Alert severity="error" sx={{ mt: 2 }}>
+          {"OH NO! Something fucked up happened."}
+        </Alert>
+      );
     }
+
+    if (isSuccess) return (
+        <Alert severity="success" sx={{ mt: 2 }}>
+          {"Candidate added successfully!"}
+        </Alert>
+      );
   };
 
-  const apiErrorMessage = () => {
-    if (isError) console.log(error?.message);
-    
-    return isError && (
-      <Alert severity="error" sx={{ mt: 2 }}>
-        {"OH NO! Something fucked up happened."}
-      </Alert>
-    )
-  };
-
-  // Clears the error when the user starts typing
   const clearError = (field: string) => {
     if (errors[field]) {
       setErrors((prev) => {
@@ -109,13 +67,14 @@ const CandidateForm = ({ handleClose }: CandidateFormProps) => {
       onSubmit={handleSubmit}
       noValidate
     >
-      {apiErrorMessage()}
+      {apiCallMessages()}
 
       <div style={{ display: "flex" }}>
         <TextField
           required
           name="firstName"
           label="First Name"
+          disabled={isPending || isSuccess}
           error={!!errors.firstName}
           helperText={errors.firstName}
           onChange={() => clearError("firstName")}
@@ -124,6 +83,7 @@ const CandidateForm = ({ handleClose }: CandidateFormProps) => {
           required
           name="lastName"
           label="Last Name"
+          disabled={isPending || isSuccess}
           error={!!errors.lastName}
           helperText={errors.lastName}
           onChange={() => clearError("lastName")}
@@ -134,6 +94,7 @@ const CandidateForm = ({ handleClose }: CandidateFormProps) => {
           required
           name="email"
           label="Email"
+          disabled={isPending || isSuccess}
           error={!!errors.email}
           helperText={errors.email}
           onChange={() => clearError("email")}
@@ -142,6 +103,7 @@ const CandidateForm = ({ handleClose }: CandidateFormProps) => {
           required
           name="position"
           label="Position"
+          disabled={isPending || isSuccess}
           error={!!errors.position}
           helperText={errors.position}
           onChange={() => clearError("position")}
@@ -151,7 +113,12 @@ const CandidateForm = ({ handleClose }: CandidateFormProps) => {
       <div style={{ display: "flex" }}>
         <FormControl sx={{ minWidth: 120 }}>
           <InputLabel>Status</InputLabel>
-          <Select name="status" label="Status" defaultValue={Status.NEW}>
+          <Select
+            disabled={isPending || isSuccess}
+            name="status"
+            label="Status"
+            defaultValue={Status.NEW}
+          >
             <MenuItem value={Status.NEW}>{Status.NEW}</MenuItem>
             <MenuItem value={Status.INTERVIEW}>{Status.INTERVIEW}</MenuItem>
             <MenuItem value={Status.HIRED}>{Status.HIRED}</MenuItem>
@@ -162,12 +129,18 @@ const CandidateForm = ({ handleClose }: CandidateFormProps) => {
           name="experience"
           variant="outlined"
           label="Experience"
+          disabled={isPending || isSuccess}
           error={!!errors.experience}
           helperText={errors.experience}
           onChange={() => clearError("experience")}
         />
       </div>
-      <CandidateFormControlBtns handleClose={handleClose} />
+
+      <CandidateFormControlBtns
+        handleClose={handleClose}
+        loading={isPending}
+        success={isSuccess}
+      />
     </Box>
   );
 };

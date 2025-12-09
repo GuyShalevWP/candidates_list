@@ -1,14 +1,24 @@
+import type { CandidateType, Status } from "../types/Candidates";
 import type {
   FormDataType,
   ValidateInputsType,
 } from "../types/ValidateFormType";
+import { toTitleCase } from "./filterUtils";
+
+export const newCandidateData = (data: Record<string, FormDataEntryValue>): CandidateType => ({
+  id: crypto.randomUUID(),
+  name: toTitleCase(`${data.firstName} ${data.lastName}`),
+  email: data.email as string,
+  position: toTitleCase(data.position as string),
+  status: data.status as Status,
+  experienceYears: Number(data.experience),
+});
 
 export const validateForm = ({ formData, newErrors }: FormDataType) => {
   const lettersRegex = /^[A-Za-z\s]+$/;
   const numbersRegex = /^\d+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  // Validate First Name and Last Name
   const firstName = formData.get("firstName") as string;
   const lastName = formData.get("lastName") as string;
   const email = formData.get("email") as string;

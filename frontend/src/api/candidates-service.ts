@@ -9,7 +9,7 @@ export const getCandidatesList = () => {
 	});
 };
 
-export const postNewCandidate = () => {
+export const createNewCandidate = () => {
 	const queryClient = useQueryClient();
 
 	return useMutation<CandidateType, Error, CandidateType>({
