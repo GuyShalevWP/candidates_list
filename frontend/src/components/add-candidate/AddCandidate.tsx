@@ -1,10 +1,24 @@
+import Modal from "@mui/material/Modal";
+import CandidateForm from "./candidate-form/CandidateForm";
 
-const AddCandidate = () => {
+type AddCandidateProps = {
+  open: boolean;
+  onClose: () => void;
+};
+
+const AddCandidate = ({ open, onClose}: AddCandidateProps) => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <Modal
+        open={open}
+        onClose={onClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <CandidateForm handleClose={onClose} />
+      </Modal>
+    </>
+  );
+};
 
-export default AddCandidate
+export default AddCandidate;
